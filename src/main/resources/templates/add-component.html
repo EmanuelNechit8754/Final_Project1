@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Component</title>
+    <style>
+        /* Basic styling */
+        body { font-family: Arial, sans-serif; }
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover { background-color: #ddd; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .form-section { margin-top: 20px; display: none; }
+    </style>
+    <script>
+        function showForm(componentType) {
+            // Hide all form sections
+            document.querySelectorAll('.form-section').forEach(section => section.style.display = 'none');
+
+            // Display the selected component form section
+            document.getElementById(componentType + '-form').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+
+<h1>Add New Component</h1>
+
+<!-- Dropdown Menu for Component Type -->
+<div class="dropdown">
+    <button>Select Component Type</button>
+    <div class="dropdown-content">
+        <a href="#" onclick="showForm('cpu')">CPU</a>
+        <a href="#" onclick="showForm('gpu')">GPU</a>
+        <a href="#" onclick="showForm('motherboard')">Motherboard</a>
+        <a href="#" onclick="showForm('psu')">PSU</a>
+    </div>
+</div>
+
+<!-- CPU Form Section -->
+<div id="cpu-form" class="form-section">
+    <h2>Add CPU</h2>
+    <form action="/cpu" method="post">
+        <label for="cpuName">Name:</label>
+        <input type="text" id="cpuName" name="name" required><br>
+
+        <label for="cpuPrice">Price:</label>
+        <input type="number" id="cpuPrice" name="price" required><br>
+
+        <label for="cpuGeneration">Generation:</label>
+        <input type="number" id="cpuGeneration" name="generation" required><br>
+
+        <label for="cpuSocketType">Socket Type:</label>
+        <input type="text" id="cpuSocketType" name="socketType" required><br>
+
+        <button type="submit">Add CPU</button>
+    </form>
+</div>
+
+<!-- GPU Form Section -->
+<div id="gpu-form" class="form-section">
+    <h2>Add GPU</h2>
+    <form action="/gpu" method="post">
+        <label for="gpuName">Name:</label>
+        <input type="text" id="gpuName" name="name" required><br>
+
+        <label for="gpuPrice">Price:</label>
+        <input type="number" id="gpuPrice" name="price" required><br>
+
+        <label for="gpuVoltage">Voltage:</label>
+        <input type="number" id="gpuVoltage" name="voltage" required><br>
+
+        <button type="submit">Add GPU</button>
+    </form>
+</div>
+
+<!-- Motherboard Form Section -->
+<div id="motherboard-form" class="form-section">
+    <h2>Add Motherboard</h2>
+    <form action="/motherboard" method="post">
+        <label for="motherboardName">Name:</label>
+        <input type="text" id="motherboardName" name="name" required><br>
+
+        <label for="motherboardPrice">Price:</label>
+        <input type="number" id="motherboardPrice" name="price" required><br>
+
+        <label for="motherboardSocketType">Socket Type:</label>
+        <input type="text" id="motherboardSocketType" name="socketType" required><br>
+
+        <button type="submit">Add Motherboard</button>
+    </form>
+</div>
+
+<!-- PSU Form Section -->
+<div id="psu-form" class="form-section">
+    <h2>Add PSU</h2>
+    <form action="/psu" method="post">
+        <label for="psuName">Name:</label>
+        <input type="text" id="psuName" name="name" required><br>
+
+        <label for="psuPrice">Price:</label>
+        <input type="number" id="psuPrice" name="price" required><br>
+
+        <label for="psuVoltage">Voltage:</label>
+        <input type="number" id="psuVoltage" name="voltage" required><br>
+
+        <button type="submit">Add PSU</button>
+    </form>
+</div>
+
+</body>
+</html>
